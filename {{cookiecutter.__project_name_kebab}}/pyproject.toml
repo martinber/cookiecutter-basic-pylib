@@ -1,3 +1,62 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4"]
+requires = ["setuptools>=46", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.__project_name_kebab }}"
+description = "{{ cookiecutter.project_short_description }}"
+readme = "README.md"
+urls.repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_name_kebab }}"
+authors = [{ name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" }]
+license = { file = "LICENSE" }
+
+dynamic = ["version"]  # Version will be set by setuptools_scm according to git tag
+requires-python = ">=3.10"
+
+dependencies = [
+]
+optional-dependencies.dev = [
+	"build",
+	"wheel",
+	"twine",
+	"pytest",
+	"pytest-mock",
+	"pylint",
+	"black",
+	"mypy",
+	"nbstripout",
+]
+
+[tool.setuptools.packages.find]
+include = ["{{ cookiecutter.__project_name_snake }}"]
+
+[tool.setuptools_scm]
+write_to = "./{{ cookiecutter.__project_name_snake }}/_version.py"
+write_to_template = "__version__ = '{version}'\n"
+
+[tool.black]
+line-length = 100
+
+[tool.pylint.FORMAT]
+max-line-length = 100
+
+[tool.pylint.DESIGN]
+max-args = 8
+max-positional-arguments = 8
+
+[tool.pylint.SIMILARITIES]
+min-similarity-lines=4
+
+[tool.pylint."MESSAGE CONTROL"]
+disable = [
+  "missing-docstring",
+  "fixme",
+]
+
+[tool.mypy]
+warn_unused_configs = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["numpy.*", "scipy.*"]
+ignore_missing_imports = true

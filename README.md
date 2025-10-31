@@ -1,12 +1,5 @@
 # Basic python library cookiecutter template
 
-This is very basic cookiecutter template suitable to start
-a new python library project with packaging and tests features.
-
-## Requirements
-
-* Python3
-
 ## Install cookiecutter
 
 ```sh
@@ -19,11 +12,7 @@ pip install --user cookiecutter
 pip install --upgrade cookiecutter
 ```
 
----
-
 ## Generate new project using this cookiecutter
-
-To create a new project using this cookiecutter template use the following
 
 ```sh
 cookiecutter gh:treai-foundations/cookiecutter-basic-pylib
@@ -38,22 +27,18 @@ can be useful to update it with recent modifications.
 ```sh
 > cookiecutter gh:treai-foundations/cookiecutter-basic-pylib
 You've downloaded /home/rciatti/.cookiecutters/cookiecutter-basic-pylib before.
-Is it okay to delete and re-download it? [yes]: 
+Is it okay to delete and re-download it? [yes]:
 ```
 
-After the template download, cookiecutter will prompt you wit a serie of qeustions
+After the template download, cookiecutter will prompt you with some questions
 defined in the template configuration:
 
 ```sh
-author_name [Author Name]: 
-author_email [author@email.com]: 
-github_username [github_username]: 
-project_name [name-of-the-project]: 
-project_short_description [Short description of the project]: 
-github_action_pr_triggered [y]: 
-github_action_tag_triggered [y]: 
-use_flake8 [y]: 
-use_coverage [y]: 
+author_name [Author Name]:
+author_email [author@email.com]:
+github_username [github_username]:
+project_name [name-of-the-project]:
+project_short_description [Short description of the project]:
 Select license:
 1 - Proprietary
 2 - MIT license
@@ -66,30 +51,17 @@ Choose from 1, 2, 3, 4, 5, 6 [1]:
 
 Each question has a default value.
 
-### About some options
+## Update projects using this cookiecutter
 
-* `github_action_pr_triggered`: add the github action workflow to react to PRs
-* `github_action_tag_triggered`: add the github action workflow to react to tags
-* `use_flake8`: enable flake8 linter (adding also the package to the *requirements_dev.txt*)
-* `use_coverage`: enable coverage and web report
-
-## Makefile
-
-The template, after prompting for all the options, will generate a `Makefile`
-that can be used to help you with several tasks that can be exploited like below:
+First, get the working state of your git repository ready, then rebuild the template overwriting the
+files
 
 ```sh
-> make help
-
-clean                remove all build, test, coverage and Python artifacts
-clean-build          remove build artifacts
-clean-pyc            remove Python file artifacts
-clean-test           remove test and coverage artifacts
-test                 run tests quickly with the default Python
-coverage             check code coverage quickly with the default Python
-coverage-web         check code coverage and open report in web browser
-dist                 builds source and wheel package
+cd ../
+cookiecutter gh:treai-foundations/cookiecutter-basic-pylib -f
 ```
+
+Then, move to the folder of the project, check the `git diff` and decide which changes to apply.
 
 ## Git init
 
@@ -101,9 +73,3 @@ git init .
 
 inside the newly generated project. This is mandatory because the
 `setuptools_scm` is used to fetch tag versions from the Version Control System.
-
-## Your duties
-
-After the project creation, having a `virtualenv` and installing development
-dependencies contained in `requirements_dev.txt` depends on you and your way
-to work.

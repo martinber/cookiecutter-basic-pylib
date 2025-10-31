@@ -115,5 +115,4 @@ Copyright (c) {% now 'local', '%Y' %}, TRE Altamira - A CLS Group Company, All R
 
 * Unauthorized copying of this project, via any medium is strictly prohibited
 * Proprietary and confidential
-* Written by SWIT team, swit@tre-altamira.com
 {% endif %}
